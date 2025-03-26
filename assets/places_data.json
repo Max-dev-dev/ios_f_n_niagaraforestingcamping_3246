@@ -1,0 +1,137 @@
+{
+    "places": [
+      {
+        "type": "Tranquil Retreat",
+        "items": [
+          {
+            "id": 1,
+            "title": "Niagara Falls KOA Holiday",
+            "description": "Located just minutes from the majestic Niagara Falls, this campground offers a peaceful retreat with amenities such as outdoor and indoor heated pools, an outdoor cinema, and a camp store. It's an ideal spot for families and nature enthusiasts seeking relaxation",
+            "coordinates": "43.0896° N, 79.0849° W",
+            "image_url": "assets/images/1.png"
+          },
+          {
+            "id": 2,
+            "title": "Four Mile Creek State Park",
+            "description": "Situated on the shores of Lake Ontario, this park provides a serene environment with picnic tables, nature trails, and a campground with tent and trailer sites. It's perfect for those looking to unwind amidst natural beauty",
+            "coordinates": "43.2550° N, 79.0350° W​",
+            "image_url": "assets/images/2.png"
+          },
+          {
+            "id": 3,
+            "title": "Rattlesnake Point Conservation Area",
+            "description": "Located in Milton, this conservation area offers tranquil hiking trails along the Niagara Escarpment, with opportunities for picnicking and camping. It's a peaceful spot for nature lovers. ",
+            "coordinates": "43.5290° N, 79.9490° W",
+            "image_url": "assets/images/3.png"
+          },
+          {
+            "id": 4,
+            "title": "Rock Point Provincial Park",
+            "description": "Situated on the shore of Lake Erie, this park offers a quiet camping experience with opportunities for fishing, hiking, and picnicking. It's a great place to relax and enjoy the natural surroundings.​",
+            "coordinates": "42.8833° N, 79.5667° W° W​",
+            "image_url": "assets/images/4.png"
+          }
+        ]
+      },
+      {
+        "type": "Adventure Camping",
+        "items": [
+          {
+            "id": 5,
+            "title": "Kelso Conservation Area",
+            "description": "Located near Milton, this area offers camping, hiking, mountain biking, and boating on Lake Kelso. It's a hub for outdoor adventures",
+            "coordinates": "43.5290° N, 79.9330° W​​",
+            "image_url": "assets/images/5.png"
+          },
+          {
+            "id": 6,
+            "title": "Short Hills Provincial Park",
+            "description": "Known for its rugged terrain and diverse trails, this park is ideal for hiking and mountain biking enthusiasts seeking an adventurous experience.​",
+            "coordinates": "43.1167° N, 79.2833° W​",
+            "image_url": "assets/images/6.png"
+          },
+          {
+            "id": 7,
+            "title": "Mono Cliffs Provincial Park",
+            "description": "This park features challenging hiking trails along the Niagara Escarpment, offering scenic views and diverse ecosystems for adventure seekers.",
+            "coordinates": "44.0833° N, 80.1667° W​",
+            "image_url": "assets/images/8.png"
+          },
+          {
+            "id": 8,
+            "title": "Niagara Glen Nature Reserve",
+            "description": "Located near Niagara Falls, this reserve offers hiking trails through a unique geological landscape, providing an adventurous experience amidst lush vegetation.​",
+            "coordinates": "43.0833° N, 79.0667° W",
+            "image_url": "assets/images/9.png"
+          }
+        ]
+      },
+      {
+        "type": "Cultural & Historical Sites",
+        "items": [
+          {
+            "id": 9,
+            "title": "Niagara Falls State Park",
+            "description": "As America's oldest state park, it offers historical exhibits, picnic areas, and proximity to the iconic Niagara Falls, providing a rich cultural experience.",
+            "coordinates": "43.0850° N, 79.0560° W​",
+            "image_url": "assets/images/10.png"
+          },
+          {
+            "id": 10,
+            "title": "Old Fort Niagara",
+            "description": "Located in Youngstown, this historic fort dates back to the 18th century and offers guided tours, reenactments, and a glimpse into the area's military history.​",
+            "coordinates": "43.2550° N, 79.0333° W",
+            "image_url": "assets/images/11.png"
+          },
+          {
+            "id": 11,
+            "title": "Bruce Peninsula National Park",
+            "description": "This national park features historical sites, including the historic lighthouse at Cape Hurd, and offers cultural experiences alongside natural beauty.",
+            "coordinates": "45.2370° N, 81.5070° W",
+            "image_url": "assets/images/12.png"
+          },
+          {
+            "id": 12,
+            "title": "Fort George National Historic Site",
+            "description": "Located in Niagara-on-the-Lake, this fort played a significant role in the War of 1812 and offers guided tours and historical reenactments.",
+            "coordinates": "43.2550° N, 79.0667° W",
+            "image_url": "assets/images/13.png"
+          }
+        ]
+      },
+      {
+        "type": "Scenic Lookouts",
+        "items": [
+          {
+            "id": 13,
+            "title": "Queenston Heights Park",
+            "description": "This park offers panoramic views of the Niagara River and surrounding landscapes, along with historical monuments and picnic areas.​",
+            "coordinates": "43.1583° N, 79.0667° W",
+            "image_url": "assets/images/14.png"
+          },
+          {
+            "id": 14,
+            "title": "Niagara Parkway",
+            "description": "A scenic drive that runs along the Niagara River, offering numerous lookout points, picnic areas, and access to attractions like the Butterfly Conservatory.​",
+            "coordinates": "43.0896° N, 79.0849° W​",
+            "image_url": "assets/images/15.png"
+          },
+          {
+            "id": 15,
+            "title": "Mount Nemo Conservation Area",
+            "description": "Located in Burlington, this area offers hiking trails with scenic views of the surrounding countryside and the Niagara Escarpment.​",
+            "coordinates": "43.3500° N, 79.9333° W",
+            "image_url": "assets/images/16.png"
+          },
+          {
+            "id": 16,
+            "title": "Niagara Escarpment",
+            "description": "A UNESCO World Biosphere Reserve offering numerous trails and lookouts with breathtaking views of the surrounding landscapes.​",
+            "coordinates": "43.0896° N, 79.0849° W",
+            "image_url": "assets/images/17.png"
+          }
+        ]
+      }
+    ]
+  }
+  
