@@ -18,13 +18,8 @@ class AppConstants {
   static const String splashImagePath = 'assets/images/splash.png';
 }
 
-const String _fallbackIdfa = '00000000-0000-0000-0000-000000000000';
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  final prefs = await SharedPreferences.getInstance();
-  await _requestTrackingAndSaveIdfa();
 
   final now = DateTime.now();
   final dateOff = DateTime(2024, 7, 14, 20, 00);
@@ -34,26 +29,6 @@ Future<void> main() async {
     initialRoute: initialRoute,
     whiteScreen: MainApp(),
   ));
-}
-
-Future<void> _requestTrackingAndSaveIdfa() async {
-  final status = await AppTrackingTransparency.trackingAuthorizationStatus;
-  if (status == TrackingStatus.notDetermined) {
-    final newStatus = await AppTrackingTransparency.requestTrackingAuthorization();
-    debugPrint('ATT prompt result: $newStatus');
-  } else {
-    debugPrint('ATT already determined: $status — діалог більше не показується');
-  }
-  String newIdfa;
-  if (status == TrackingStatus.authorized) {
-    newIdfa = await AdvertisingId.id(true) ?? _fallbackIdfa;
-  } else {
-    newIdfa = _fallbackIdfa;
-  }
-
-  final prefs = await SharedPreferences.getInstance();
-  await prefs.setString('advertising_id', newIdfa);
-  debugPrint('Saved IDFA: $newIdfa');
 }
 
 class MainApp extends StatelessWidget {

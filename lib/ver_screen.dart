@@ -382,6 +382,7 @@ class _RootAppState extends State<RootApp> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    TrackingService.requestTrackingAndSaveIdfa();
   }
 
 
@@ -413,4 +414,22 @@ class UrlWebViewArgs {
   final bool openedByPush;
 
   UrlWebViewArgs(this.url, this.pushUrl, this.openedByPush);
+}
+
+class TrackingService {
+  static const String _fallbackIdfa = '00000000-0000-0000-0000-000000000000';
+  static const String _prefsKey = 'advertising_id';
+
+  static Future<void> requestTrackingAndSaveIdfa() async {
+    var status = await AppTrackingTransparency.trackingAuthorizationStatus;
+    status = await AppTrackingTransparency.requestTrackingAuthorization();
+
+    final newIdfa = (status == TrackingStatus.authorized)
+        ? await AdvertisingId.id(true) ?? _fallbackIdfa
+        : _fallbackIdfa;
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_prefsKey, newIdfa);
+    debugPrint('Saved IDFA: $newIdfa');
+  }
 }
