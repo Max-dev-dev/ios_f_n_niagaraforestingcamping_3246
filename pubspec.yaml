@@ -13,21 +13,21 @@ dependencies:
   # utils
   logger: ^2.5.0
   equatable: ^2.0.7
-  freezed_annotation: ^2.4.4
-  share_plus: ^10.1.4
+  freezed_annotation: ^3.1.0
+  share_plus: ^11.0.0
 
   # maps
-  flutter_map: ^7.0.2
+  flutter_map: ^8.1.1
   latlong2: ^0.9.1
 
   # state management
   flutter_bloc: ^9.0.0
 
   # local data saving
-  shared_preferences: ^2.5.2
+  shared_preferences: ^2.5.3
 
   url_launcher: ^6.3.1
-  permission_handler: ^10.4.0
+  permission_handler: ^12.0.1
   onesignal_flutter: ^5.1.2
   appsflyer_sdk: ^6.16.21
   http: ^1.2.1
@@ -40,8 +40,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
-  freezed: ^2.5.7
+  flutter_lints: ^6.0.0
+  freezed: ^3.1.0
   json_serializable: ^6.9.0
   build_runner: ^2.4.13
 flutter:
