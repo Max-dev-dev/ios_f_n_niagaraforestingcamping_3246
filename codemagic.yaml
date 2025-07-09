@@ -8,7 +8,7 @@ workflows:
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.nine.gold.secrets
+        bundle_identifier: com.niagara.forest.camping
       vars:
         APP_ID: 6748390760
       flutter: stable
