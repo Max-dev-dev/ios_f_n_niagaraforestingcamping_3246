@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 import 'dart:io';
-import 'package:advertising_id/advertising_id.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
@@ -422,14 +421,26 @@ class TrackingService {
 
   static Future<void> requestTrackingAndSaveIdfa() async {
     var status = await AppTrackingTransparency.trackingAuthorizationStatus;
-    status = await AppTrackingTransparency.requestTrackingAuthorization();
 
-    final newIdfa = (status == TrackingStatus.authorized)
-        ? await AdvertisingId.id(true) ?? _fallbackIdfa
+    if (status == TrackingStatus.notDetermined) {
+      status = await AppTrackingTransparency.requestTrackingAuthorization();
+      debugPrint('ATT prompt result: $status');
+    } else {
+      debugPrint('ATT already determined: $status');
+    }
+
+    final rawIdfa = await AppTrackingTransparency.getAdvertisingIdentifier();
+    final newIdfa = (status == TrackingStatus.authorized && rawIdfa.isNotEmpty)
+        ? rawIdfa
         : _fallbackIdfa;
 
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_prefsKey, newIdfa);
     debugPrint('Saved IDFA: $newIdfa');
+  }
+
+  static Future<String> loadIdfa() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_prefsKey) ?? _fallbackIdfa;
   }
 }
