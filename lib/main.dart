@@ -1,3 +1,4 @@
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ios_f_n_niagaraforestcamping_3246/pages/map/cubit/places_cubit.dart';
@@ -37,9 +38,9 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
   @override
-  void initState() {
+  void initState() async {
     super.initState();
-    requestAtt();
+    await requestAtt();
   }
 
   @override
