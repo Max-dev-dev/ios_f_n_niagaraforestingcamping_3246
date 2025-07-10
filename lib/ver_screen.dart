@@ -255,13 +255,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
         // 10) AppsFlyer + setCustomerUserId(idfv)
         final sdk = await setUpAppsFlyer();
 
-        requestAtt();
+        await requestAtt();
 
         if (idfv != null) {
           sdk.setCustomerUserId(idfv);
         }
-
-
 
         // 10) Отримання AppsFlyer UID
         await getAppsflyerUserId(sdk, prefs);
@@ -377,7 +375,7 @@ class RootApp extends StatefulWidget {
 class _RootAppState extends State<RootApp> with WidgetsBindingObserver {
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
   }
@@ -413,9 +411,11 @@ class UrlWebViewArgs {
   UrlWebViewArgs(this.url, this.pushUrl, this.openedByPush);
 }
 
-void requestAtt() async {
-  final status = await
-  AppTrackingTransparency.trackingAuthorizationStatus;
+const _fallbackIdfa = '00000000-0000-0000-0000-000000000000';
+const _prefsKey = 'advertising_id';
+
+Future<void> requestAtt() async {
+  final status = await AppTrackingTransparency.trackingAuthorizationStatus;
   if(status== TrackingStatus.notDetermined){
     await AppTrackingTransparency.requestTrackingAuthorization();
   }
@@ -423,13 +423,18 @@ void requestAtt() async {
 }
 
 void getIDFA() async {
-  final status = await
-  AppTrackingTransparency.trackingAuthorizationStatus;
+  final status = await AppTrackingTransparency.trackingAuthorizationStatus;
+  String idToSave;
   if(status == TrackingStatus.authorized){
-    final idfa = await
-    AppTrackingTransparency.getAdvertisingIdentifier();
+    final idfa = await AppTrackingTransparency.getAdvertisingIdentifier();
+    idToSave = idfa.isNotEmpty ? idfa : _fallbackIdfa;
     print("IDFA : $idfa");
   }else{
-    print("Tracking not authorized : $status");
+    idToSave = _fallbackIdfa;
+    print("Tracking not authorized : $idToSave");
   }
+
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setString(_prefsKey, idToSave);
+  print("Saved advertising_id: $idToSave");
 }
