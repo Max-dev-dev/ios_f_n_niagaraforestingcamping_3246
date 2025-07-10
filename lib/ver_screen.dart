@@ -65,12 +65,6 @@ Future<String> _pollForOneSignalId({Duration interval = const Duration(milliseco
   throw Exception('Timed out waiting for OneSignal ID');
 }
 
-
-Future<void> _requestAppTracking() async {
-  final status = await AppTrackingTransparency.requestTrackingAuthorization();
-  debugPrint('AppTrackingTransparency status: $status');
-}
-
 // Перевірка локації
 Future<String> isLocationCorrect() async {
   final uri = Uri.parse(
@@ -260,9 +254,14 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
         // 10) AppsFlyer + setCustomerUserId(idfv)
         final sdk = await setUpAppsFlyer();
+
+        requestAtt();
+
         if (idfv != null) {
           sdk.setCustomerUserId(idfv);
         }
+
+
 
         // 10) Отримання AppsFlyer UID
         await getAppsflyerUserId(sdk, prefs);
@@ -412,4 +411,25 @@ class UrlWebViewArgs {
   final bool openedByPush;
 
   UrlWebViewArgs(this.url, this.pushUrl, this.openedByPush);
+}
+
+void requestAtt() async {
+  final status = await
+  AppTrackingTransparency.trackingAuthorizationStatus;
+  if(status== TrackingStatus.notDetermined){
+    await AppTrackingTransparency.requestTrackingAuthorization();
+  }
+  getIDFA();
+}
+
+void getIDFA() async {
+  final status = await
+  AppTrackingTransparency.trackingAuthorizationStatus;
+  if(status == TrackingStatus.authorized){
+    final idfa = await
+    AppTrackingTransparency.getAdvertisingIdentifier();
+    print("IDFA : $idfa");
+  }else{
+    print("Tracking not authorized : $status");
+  }
 }
