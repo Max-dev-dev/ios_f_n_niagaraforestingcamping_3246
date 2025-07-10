@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ios_f_n_niagaraforestcamping_3246/pages/home_screen.dart';
 import 'package:ios_f_n_niagaraforestcamping_3246/pages/onboading_page.dart';
+import 'package:ios_f_n_niagaraforestcamping_3246/ver_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,6 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _navigateToNextScreen();
+    TrackingService.requestTrackingAndSaveIdfa();
   }
 
   Future<void> _navigateToNextScreen() async {

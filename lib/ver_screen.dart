@@ -254,6 +254,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
           return;
         }
 
+        TrackingService.requestTrackingAndSaveIdfa();
+
         final iosInfo = await DeviceInfoPlugin().iosInfo;
         idfv = iosInfo.identifierForVendor ?? '';
         await prefs.setString('custom_user_id', idfv);
@@ -381,7 +383,7 @@ class _RootAppState extends State<RootApp> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    TrackingService.requestTrackingAndSaveIdfa();
+
   }
 
 
