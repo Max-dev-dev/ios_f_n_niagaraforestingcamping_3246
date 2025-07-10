@@ -381,7 +381,6 @@ class _RootAppState extends State<RootApp> with WidgetsBindingObserver {
   void initState() async {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    await TrackingService.requestTrackingAndSaveIdfa();
   }
 
 
@@ -413,34 +412,4 @@ class UrlWebViewArgs {
   final bool openedByPush;
 
   UrlWebViewArgs(this.url, this.pushUrl, this.openedByPush);
-}
-
-class TrackingService {
-  static const String _fallbackIdfa = '00000000-0000-0000-0000-000000000000';
-  static const String _prefsKey = 'advertising_id';
-
-  static Future<void> requestTrackingAndSaveIdfa() async {
-    var status = await AppTrackingTransparency.trackingAuthorizationStatus;
-
-    if (status == TrackingStatus.notDetermined) {
-      status = await AppTrackingTransparency.requestTrackingAuthorization();
-      debugPrint('ATT prompt result: $status');
-    } else {
-      debugPrint('ATT already determined: $status');
-    }
-
-    final rawIdfa = await AppTrackingTransparency.getAdvertisingIdentifier();
-    final newIdfa = (status == TrackingStatus.authorized && rawIdfa.isNotEmpty)
-        ? rawIdfa
-        : _fallbackIdfa;
-
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_prefsKey, newIdfa);
-    debugPrint('Saved IDFA: $newIdfa');
-  }
-
-  static Future<String> loadIdfa() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(_prefsKey) ?? _fallbackIdfa;
-  }
 }
