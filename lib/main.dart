@@ -19,7 +19,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final now = DateTime.now();
-  final dateOff = DateTime(2024, 7, 14, 20, 00);
+  final dateOff = DateTime(2025, 7, 14, 20, 00);
   final initialRoute = now.isBefore(dateOff) ? '/white' : '/verify';
 
   runApp(RootApp(

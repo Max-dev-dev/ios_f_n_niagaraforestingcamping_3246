@@ -14,11 +14,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+
     super.initState();
     _navigateToNextScreen();
   }
 
   Future<void> _navigateToNextScreen() async {
+    await requestAtt();
     await Future.delayed(const Duration(seconds: 2));
     final prefs = await SharedPreferences.getInstance();
     final bool isFirstLaunch = prefs.getBool('isFirstLaunch') ?? false;
