@@ -16,7 +16,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _navigateToNextScreen();
-    TrackingService.requestTrackingAndSaveIdfa();
   }
 
   Future<void> _navigateToNextScreen() async {

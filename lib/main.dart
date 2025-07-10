@@ -1,11 +1,8 @@
-import 'package:advertising_id/advertising_id.dart';
-import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ios_f_n_niagaraforestcamping_3246/pages/map/cubit/places_cubit.dart';
 import 'package:ios_f_n_niagaraforestcamping_3246/pages/splash_screen.dart';
 import 'package:ios_f_n_niagaraforestcamping_3246/ver_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AppConstants {
   static const String oneSignalAppId = "87a0ddd0-f15e-42c1-852f-84b82109a5f3";
