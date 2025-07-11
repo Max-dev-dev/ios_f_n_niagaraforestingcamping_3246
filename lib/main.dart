@@ -38,8 +38,12 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
   @override
-  void initState() async {
+  void initState() {
     super.initState();
+    _initTracking();
+  }
+
+  Future<void> _initTracking() async {
     await requestAtt();
   }
 
